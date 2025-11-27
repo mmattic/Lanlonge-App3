@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Globe2, Layers, Zap, ArrowRight } from 'lucide-react';
+import { Search, Globe2, Layers, Zap } from 'lucide-react';
 import { SearchEngine } from '../types';
 
 const Hero: React.FC = () => {

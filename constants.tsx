@@ -6,8 +6,7 @@ import {
   CreditCard, 
   Package, 
   Globe2, 
-  Wrench,
-  ShoppingCart
+  Wrench
 } from "lucide-react";
 import { Category } from "./types";
 

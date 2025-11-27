@@ -38,8 +38,8 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside className="hidden lg:block w-48 shrink-0">
-      <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar pr-2">
-        <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 px-3">
+      <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar pr-2 pl-1 py-2">
+        <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 px-3">
           Categories
         </h3>
         <ul className="space-y-1">
@@ -47,16 +47,16 @@ const Sidebar: React.FC = () => {
             <li key={cat.id}>
               <button
                 onClick={() => scrollToCategory(cat.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 border-l-2
                   ${
                     activeId === cat.id
-                      ? 'bg-white text-blue-600 shadow-sm border-l-4 border-blue-600'
-                      : 'text-slate-500 hover:bg-white hover:text-slate-700'
+                      ? 'bg-gradient-to-r from-blue-50 to-transparent text-blue-700 shadow-sm border-blue-600 translate-x-1'
+                      : 'border-transparent text-slate-500 hover:bg-slate-50 hover:text-slate-700'
                   }
                 `}
               >
-                <cat.icon size={16} className={activeId === cat.id ? 'text-blue-600' : 'text-slate-400'} />
-                {cat.title.split(' ')[0]} {/* Show only Chinese part for brevity */}
+                <cat.icon size={16} className={`transition-colors duration-200 ${activeId === cat.id ? 'text-blue-600' : 'text-slate-400 group-hover:text-slate-500'}`} />
+                {cat.title.split(' ')[0]} 
               </button>
             </li>
           ))}

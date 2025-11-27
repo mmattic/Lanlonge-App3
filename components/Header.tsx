@@ -15,16 +15,19 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200/60 shadow-sm supports-[backdrop-filter]:bg-white/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
-            <a href="/" className="flex items-center gap-2">
-              <div className="text-2xl font-bold bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent italic tracking-wider">
-                LANLONGE
+          <div className="flex-shrink-0 flex items-center group cursor-pointer">
+            <a href="/" className="flex items-center gap-1">
+              <div className="relative pr-2"> {/* Added pr-2 to prevent clipping */}
+                {/* Logo styling - Tech/Modern */}
+                <span className="text-2xl font-black italic tracking-tighter bg-gradient-to-r from-blue-700 via-indigo-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-cyan-400 transition-all duration-300">
+                  LANLONGE
+                </span>
+                <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </div>
-              <span className="hidden sm:block text-slate-400 font-light text-sm pt-1">蓝隆</span>
             </a>
           </div>
 
@@ -34,13 +37,13 @@ const Header: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className={`relative px-1 pt-1 text-sm font-medium transition-colors duration-200 flex items-center
+                className={`relative px-1 pt-1 text-sm font-bold transition-colors duration-200 flex items-center tracking-wide
                   ${link.active ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'}
                 `}
               >
                 {link.name}
                 {link.badge && (
-                  <span className="absolute -top-1 -right-3 flex h-2 w-2">
+                  <span className="absolute -top-1.5 -right-3 flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                   </span>
@@ -53,7 +56,7 @@ const Header: React.FC = () => {
           <div className="flex items-center gap-4">
             <a
               href="#"
-              className="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 transition-all transform hover:scale-105"
+              className="hidden sm:inline-flex items-center justify-center px-5 py-2 border border-transparent text-sm font-bold rounded-full shadow-lg shadow-blue-500/20 text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 transition-all transform hover:scale-105 hover:shadow-blue-500/40"
             >
               新手指南
             </a>
@@ -69,13 +72,13 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-100 bg-white">
+        <div className="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md absolute w-full left-0 shadow-lg">
           <div className="pt-2 pb-4 space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-slate-600 hover:bg-slate-50 hover:border-blue-500 hover:text-blue-700"
+                className="block pl-3 pr-4 py-3 border-l-4 border-transparent text-base font-medium text-slate-600 hover:bg-slate-50 hover:border-blue-500 hover:text-blue-700"
               >
                 {link.name}
               </a>

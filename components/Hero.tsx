@@ -31,10 +31,10 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight mb-4 drop-shadow-sm">
-          欧洲跨境卖家信赖的<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">资源导航</span>
+          全链路跨境赋能 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-cyan-500">解决出海难题</span>
         </h1>
         <p className="text-sm sm:text-base text-slate-500 uppercase tracking-[0.25em] font-bold mb-12 opacity-80">
-          Trusted Resources for Cross-Border Business
+          Empowering Sellers & Solving Cross-Border Challenges
         </p>
 
         {/* Search Component */}

@@ -19,14 +19,19 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center group cursor-pointer">
+          <div className="flex-shrink-0 flex items-center group cursor-pointer select-none">
             <a href="/" className="flex items-center gap-1">
-              <div className="relative pr-2"> {/* Added pr-2 to prevent clipping */}
-                {/* Logo styling - Tech/Modern */}
-                <span className="text-2xl font-black italic tracking-tighter bg-gradient-to-r from-blue-700 via-indigo-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:to-cyan-400 transition-all duration-300">
+              <div className="relative py-1"> 
+                {/* 
+                   Fix: Added 'font-exo' for the new font.
+                   Fix: Added 'pr-4' directly to the SPAN. This expands the box model of the text element itself,
+                   ensuring the 'bg-clip-text' gradient covers the slanted italic tail of the last letter.
+                */}
+                <span className="text-3xl font-exo font-black italic tracking-tight bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 bg-clip-text text-transparent drop-shadow-sm filter transition-all duration-300 group-hover:brightness-110 pr-4">
                   LANLONGE
                 </span>
-                <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                {/* Decorative dynamic underline */}
+                <div className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left opacity-80"></div>
               </div>
             </a>
           </div>

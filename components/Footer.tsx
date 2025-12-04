@@ -1,11 +1,19 @@
 import React from 'react';
+import { PageView } from '../types';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (view: PageView) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="bg-white border-t border-slate-100 mt-20">
+    <footer className="bg-white border-t border-slate-100 mt-0">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
-          {['关于我们', '免责声明', '隐私政策', '联系方式'].map((item) => (
+          <button onClick={() => onNavigate?.('about')} className="text-slate-400 hover:text-slate-500 text-sm">
+            关于我们
+          </button>
+          {['免责声明', '隐私政策', '联系方式'].map((item) => (
             <a key={item} href="#" className="text-slate-400 hover:text-slate-500 text-sm">
               {item}
             </a>

@@ -18,3 +18,5 @@ export interface Category {
 }
 
 export type SearchEngine = 'Baidu' | 'Google' | 'Amazon' | 'Bing';
+
+export type PageView = 'home' | 'about';

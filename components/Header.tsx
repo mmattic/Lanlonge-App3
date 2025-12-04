@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { PageView } from '../types';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  currentView?: PageView;
+  onNavigate?: (view: PageView) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ currentView, onNavigate }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleNavClick = (href: string, view?: PageView) => {
+    if (view && onNavigate) {
+      onNavigate(view);
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   const navLinks = [
-    { name: '导航', href: '#', active: true },
+    { name: '导航', href: '#', active: currentView === 'home', view: 'home' as PageView },
     { name: '搜索', href: '#' },
     { name: '热榜', href: '#', badge: 'hot' },
     { name: '快讯', href: '#' },
     { name: '工具箱', href: '#' },
     { name: '知识库', href: '#' },
     { name: 'AI问答', href: '#' },
+    { name: '关于我们', href: '#', active: currentView === 'about', view: 'about' as PageView },
   ];
 
   return (
@@ -19,8 +33,8 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center group cursor-pointer select-none">
-            <a href="/" className="flex items-center gap-1">
+          <div className="flex-shrink-0 flex items-center group cursor-pointer select-none" onClick={() => onNavigate?.('home')}>
+            <a href="#" onClick={(e) => { e.preventDefault(); onNavigate?.('home'); }} className="flex items-center gap-1">
               <div className="relative py-1"> 
                 {/* 
                    Fix: Added 'font-exo' for the new font.
@@ -42,6 +56,12 @@ const Header: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => {
+                   if (link.view) {
+                     e.preventDefault();
+                     handleNavClick(link.href, link.view);
+                   }
+                }}
                 className={`relative px-1 pt-1 text-sm font-bold transition-colors duration-200 flex items-center tracking-wide
                   ${link.active ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'}
                 `}
@@ -83,7 +103,15 @@ const Header: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="block pl-3 pr-4 py-3 border-l-4 border-transparent text-base font-medium text-slate-600 hover:bg-slate-50 hover:border-blue-500 hover:text-blue-700"
+                onClick={(e) => {
+                   if (link.view) {
+                     e.preventDefault();
+                     handleNavClick(link.href, link.view);
+                   }
+                }}
+                className={`block pl-3 pr-4 py-3 border-l-4 text-base font-medium hover:bg-slate-50 hover:border-blue-500 hover:text-blue-700
+                   ${link.active ? 'border-blue-500 text-blue-700 bg-blue-50' : 'border-transparent text-slate-600'}
+                `}
               >
                 {link.name}
               </a>
